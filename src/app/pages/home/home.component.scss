@@ -2,9 +2,11 @@
     .main-blog-container {
         position: relative;
         height: 300px;
+        width: 100%;
         overflow: hidden;
         color: white;
         padding: 20px;
+        margin-top: 60px;
         &::before {
             content: '';
             position: absolute;
@@ -61,8 +63,11 @@
         }
     }
 
+    .page-content {
+        padding-top: 16px !important;
+    }
+
     .search-input {
-        padding: 20px;
         mat-form-field {
             width: 100%;
         }
@@ -72,6 +77,5 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
         grid-gap: 1rem;
-        padding: 16px;
     }
 }

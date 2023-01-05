@@ -13,18 +13,20 @@
     </div>
 </div>
 
-<div class="search-input">
-    <mat-form-field appearance="fill" subscriptSizing="dynamic">
-        <button matPrefix mat-icon-button aria-label="Clear">
-            <mat-icon>search</mat-icon>
-        </button>
-        <input [formControl]="searchTerm" matInput placeholder="Search by Title or Content" value="Sushi">
-        <button matSuffix mat-icon-button aria-label="Clear">
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-form-field>
-</div>
-
-<div class="blogs-list">
-    <blog-card *ngFor="let blog of filtredBlogs" [blog]="blog"></blog-card>
+<div class="page-content">
+    <div class="search-input">
+        <mat-form-field appearance="fill">
+            <button matPrefix mat-icon-button aria-label="Clear">
+                <mat-icon>search</mat-icon>
+            </button>
+            <input [formControl]="searchTerm" matInput placeholder="Search by Title or Content" value="Sushi">
+            <button matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+    
+    <div class="blogs-list">
+        <blog-card *ngFor="let blog of filtredBlogs" [blog]="blog"></blog-card>
+    </div>
 </div>

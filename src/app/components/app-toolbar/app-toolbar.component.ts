@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-toolbar.component.scss']
 })
 export class AppToolbarComponent {
-
+  @Input() hideAddBlog = false
 }

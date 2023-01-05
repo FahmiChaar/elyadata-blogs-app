@@ -6,6 +6,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { AppToolbarComponent } from './app-toolbar/app-toolbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     PipesModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    RouterModule,
   ],
   exports: [
     BlogCardComponent,

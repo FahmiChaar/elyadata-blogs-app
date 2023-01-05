@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AddBlogRoutingModule } from './add-blog-routing.module';
 import { AddBlogComponent } from './add-blog.component';
+import { ComponentsModule } from '../../components/components.module';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -11,7 +15,11 @@ import { AddBlogComponent } from './add-blog.component';
   ],
   imports: [
     CommonModule,
-    AddBlogRoutingModule
+    AddBlogRoutingModule,
+    ComponentsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ]
 })
 export class AddBlogModule { }
