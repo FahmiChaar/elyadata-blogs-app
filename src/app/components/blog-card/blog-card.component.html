@@ -1,5 +1,5 @@
 <div class="blog-card-container">
-    <img class="blog-image" src="https://placeimg.com/400/400/nature" alt="">
+    <img class="blog-image" [src]="'https://picsum.photos/seed/'+blog.id+'/400/400'" alt="">
     <div class="author">
         <img class="avatar" [src]="'https://robohash.org/'+blog.author+'.png'" alt="">
         <div class="name">{{ blog.author }}</div>
