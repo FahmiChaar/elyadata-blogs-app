@@ -1,0 +1,30 @@
+<app-toolbar></app-toolbar>
+
+<div class="main-blog-container">
+    <img class="blog-image" src="https://placeimg.com/640/300/nature" alt="">
+    <div class="blog-info">
+        <div class="title">{{ mainBlog.title }}</div>
+        <div class="content">{{ mainBlog.content|truncate:250 }}</div>
+        <button mat-stroked-button class="reading-more">Read More</button>
+    </div>
+    <div class="author">
+        <img class="avatar" src="https://robohash.org/YOUR-TEXT.png" alt="">
+        <div class="name">{{ mainBlog.author }}</div>
+    </div>
+</div>
+
+<div class="search-input">
+    <mat-form-field appearance="fill" subscriptSizing="dynamic">
+        <button matPrefix mat-icon-button aria-label="Clear">
+            <mat-icon>search</mat-icon>
+        </button>
+        <input [formControl]="searchTerm" matInput placeholder="Search by Title or Content" value="Sushi">
+        <button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
+
+<div class="blogs-list">
+    <blog-card *ngFor="let blog of filtredBlogs" [blog]="blog"></blog-card>
+</div>

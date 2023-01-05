@@ -1,0 +1,16 @@
+<div class="blog-card-container">
+    <img class="blog-image" src="https://placeimg.com/400/400/nature" alt="">
+    <div class="author">
+        <img class="avatar" [src]="'https://robohash.org/'+blog.author+'.png'" alt="">
+        <div class="name">{{ blog.author }}</div>
+    </div>
+    <div class="blog-info">
+        <div class="title">{{ blog.title }}</div>
+        <div class="content">{{ blog.content|truncate }}</div>
+        <button mat-raised-button color="primary">Read More</button>
+    </div>
+    <div class="card-footer">
+        <div class="upvotes">{{ blog.upvotes }} Likes</div>
+        <div class="downvotes">{{ blog.downvotes }} Dislikes</div>
+    </div>
+</div>
