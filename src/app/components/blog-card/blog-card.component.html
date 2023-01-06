@@ -10,7 +10,7 @@
         <button mat-raised-button color="primary">Read More</button>
     </div>
     <div class="card-footer">
-        <div class="upvotes">{{ blog.upvotes }} Likes</div>
-        <div class="downvotes">{{ blog.downvotes }} Dislikes</div>
+        <div class="upvotes">{{ blog.upvotes || 0 }} Likes</div>
+        <div class="downvotes">{{ blog.downvotes || 0 }} Dislikes</div>
     </div>
 </div>
