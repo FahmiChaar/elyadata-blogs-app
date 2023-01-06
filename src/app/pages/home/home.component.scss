@@ -78,4 +78,17 @@
         grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
         grid-gap: 1rem;
     }
+
+    .no-data {
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: lightgray;
+        i.material-icons {
+            font-size: 80px;
+        }
+    }
 }

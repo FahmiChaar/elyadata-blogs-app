@@ -1,26 +1,26 @@
 <app-toolbar></app-toolbar>
 
-<div class="main-blog-container">
+<div class="main-blog-container" *ngIf="blogsService.blogs[0]">
     <img class="blog-image" src="https://placeimg.com/640/300/nature" alt="">
     <div class="blog-info">
-        <div class="title">{{ mainBlog.title }}</div>
-        <div class="content">{{ mainBlog.content|truncate:250 }}</div>
+        <div class="title">{{ blogsService.blogs[0].title }}</div>
+        <div class="content">{{ blogsService.blogs[0].content|truncate:250 }}</div>
         <button mat-stroked-button class="reading-more">Read More</button>
     </div>
     <div class="author">
         <img class="avatar" src="https://robohash.org/YOUR-TEXT.png" alt="">
-        <div class="name">{{ mainBlog.author }}</div>
+        <div class="name">{{ blogsService.blogs[0].author }}</div>
     </div>
 </div>
 
 <div class="page-content">
-    <div class="search-input">
+    <div class="search-input" *ngIf="blogsService.blogs?.length">
         <mat-form-field appearance="fill">
             <button matPrefix mat-icon-button aria-label="Clear">
                 <mat-icon>search</mat-icon>
             </button>
             <input [formControl]="searchTerm" matInput placeholder="Search by Title or Content" value="Sushi">
-            <button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchTerm.value">
+            <button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchTerm.value" (click)="clearSearch()">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
@@ -29,4 +29,13 @@
     <div class="blogs-list">
         <blog-card *ngFor="let blog of blogsService.filtredBlogs" [blog]="blog"></blog-card>
     </div>
+</div>
+
+<div class="no-data" *ngIf="!blogsService.blogs?.length">
+    <i class="material-icons">article</i>
+    <h3>No Blogs Found</h3>
+    <button mat-stroked-button color="primary" routerLink="/add-blog">
+        <mat-icon>add</mat-icon>
+        Add Your First Blog
+    </button>
 </div>

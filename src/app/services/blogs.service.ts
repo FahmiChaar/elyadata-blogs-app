@@ -16,15 +16,26 @@ export class BlogsService {
   getBlogs() {
     this.httpClient.get(`${this.apiUrl}/blogs`).subscribe({
       next: (resp: any) => {
-        this.blogs = resp
+        this.blogs = resp.reverse()
         this.filtredBlogs = this.blogs
       },
       error: (e) => console.error(e)
     })
   }
 
-  addBlog(blog: Blog) {
-    this.blogs.unshift(blog)
-    this.filtredBlogs.unshift(blog)
+  addBlog(blog: Blog): Promise<Blog> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post(`${this.apiUrl}/blogs`, blog).subscribe({
+        next: (resp: any) => {
+          this.blogs.unshift(resp)
+          this.filtredBlogs.unshift(resp)
+          resolve(resp)
+        },
+        error: (e) => {
+          console.error(e)
+          reject(e)
+        }
+      })
+    })
   }
 }

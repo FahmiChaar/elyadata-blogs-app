@@ -9,6 +9,7 @@ import { BlogsService } from '../../services/blogs.service';
 })
 export class AddBlogComponent {
   addBlogForm: FormGroup
+  loading = false
   constructor(
     private formBuilder: FormBuilder,
     private blogsService: BlogsService
@@ -20,9 +21,15 @@ export class AddBlogComponent {
     })
   }
 
-  saveBlog() {
+  async saveBlog() {
     if (this.addBlogForm.valid) {
-      this.blogsService.addBlog(this.addBlogForm.value)
+      try {
+        this.loading = true
+        await this.blogsService.addBlog(this.addBlogForm.value)
+        this.loading = false
+      }catch(e) {
+        this.loading = false
+      }
     }
   }
 }

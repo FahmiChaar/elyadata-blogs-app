@@ -11,7 +11,6 @@ import { BlogsService } from '../../services/blogs.service';
 })
 export class HomeComponent {
   searchTerm: FormControl = new FormControl()
-  mainBlog: Blog = this.blogsService.blogs[0] || {}
   constructor(
     public blogsService: BlogsService
   ) {
@@ -28,10 +27,16 @@ export class HomeComponent {
         this.blogsService.filtredBlogs = this.blogsService.blogs
       }else {
         this.blogsService.filtredBlogs = this.blogsService.blogs.filter(
-          b => b.title.toLowerCase().indexOf(value) > -1 || b.content.toLowerCase().indexOf(value) > -1
+          b => b.title.toLowerCase().indexOf(value) > -1 || 
+                b.author.toLowerCase().indexOf(value) > -1 ||
+                b.content.toLowerCase().indexOf(value) > -1
         )
       }
     })
+  }
+
+  clearSearch() {
+    this.searchTerm.reset()
   }
 
 }
