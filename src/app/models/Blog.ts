@@ -3,6 +3,6 @@ export default interface Blog {
     title: string
     content: string
     author: string
-    upvote?: number
-    downvote?: number
+    upvotes?: number
+    downvotes?: number
 }

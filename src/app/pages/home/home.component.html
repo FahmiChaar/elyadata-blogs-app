@@ -20,13 +20,13 @@
                 <mat-icon>search</mat-icon>
             </button>
             <input [formControl]="searchTerm" matInput placeholder="Search by Title or Content" value="Sushi">
-            <button matSuffix mat-icon-button aria-label="Clear">
+            <button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchTerm.value">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-form-field>
     </div>
     
     <div class="blogs-list">
-        <blog-card *ngFor="let blog of filtredBlogs" [blog]="blog"></blog-card>
+        <blog-card *ngFor="let blog of blogsService.filtredBlogs" [blog]="blog"></blog-card>
     </div>
 </div>
