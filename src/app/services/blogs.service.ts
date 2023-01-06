@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Blog from '../models/Blog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class BlogsService {
   blogs: Blog[] = []
   filtredBlogs: Blog[] = []
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private snackBar: MatSnackBar
   ) {}
 
   getBlogs() {
@@ -33,6 +35,7 @@ export class BlogsService {
         },
         error: (e) => {
           console.error(e)
+          this.snackBar.open('Error when adding blog')
           reject(e)
         }
       })
