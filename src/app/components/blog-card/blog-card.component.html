@@ -1,4 +1,9 @@
-<div class="blog-card-container">
+<div class="blog-card-container" 
+    [class.liked]="blog.upvote! > blog.downvote!"
+    [class.disliked]="blog.upvote! < blog.downvote!"
+>
+    <mat-icon *ngIf="blog.upvote! > blog.downvote!" class="vote-state like">thumb_up</mat-icon>
+    <mat-icon *ngIf="blog.upvote! < blog.downvote!" class="vote-state dislike">thumb_down</mat-icon>
     <img class="blog-image" [src]="'https://picsum.photos/seed/'+blog._id?.$oid+'/400/400'" alt="">
     <div class="author">
         <img class="avatar" [src]="'https://robohash.org/'+blog.author+'.png'" alt="">
