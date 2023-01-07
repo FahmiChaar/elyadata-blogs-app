@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BlogsService } from '../../services/blogs.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class AddBlogComponent {
   loading = false
   constructor(
     private formBuilder: FormBuilder,
-    private blogsService: BlogsService
+    private blogsService: BlogsService,
+    private router: Router
   ) {
     this.addBlogForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -27,6 +29,7 @@ export class AddBlogComponent {
         this.loading = true
         await this.blogsService.addBlog(this.addBlogForm.value)
         this.loading = false
+        this.router.navigateByUrl('/home')
       }catch(e) {
         this.loading = false
       }

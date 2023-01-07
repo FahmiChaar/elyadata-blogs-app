@@ -19,7 +19,7 @@ export class BlogsService {
     this.httpClient.get(`${this.apiUrl}/blogs`).subscribe({
       next: (resp: any) => {
         this.blogs = resp.reverse()
-        this.filtredBlogs = this.blogs
+        this.filtredBlogs = [...this.blogs]
       },
       error: (e) => console.error(e)
     })
@@ -29,8 +29,9 @@ export class BlogsService {
     return new Promise((resolve, reject) => {
       this.httpClient.post(`${this.apiUrl}/blogs`, blog).subscribe({
         next: (resp: any) => {
-          this.blogs.unshift(resp)
-          this.filtredBlogs.unshift(resp)
+          this.blogs = [resp, ...this.blogs]
+          this.filtredBlogs = [...this.blogs]
+          this.snackBar.open(`${resp.title} successfully created`)
           resolve(resp)
         },
         error: (e) => {
@@ -40,5 +41,9 @@ export class BlogsService {
         }
       })
     })
+  }
+
+  clearSearch() {
+    this.filtredBlogs = [...this.blogs]
   }
 }

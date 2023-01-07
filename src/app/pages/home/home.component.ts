@@ -15,15 +15,14 @@ export class HomeComponent {
     public blogsService: BlogsService
   ) {
     this.searchTermValueChange()
-    this.blogsService.getBlogs()
   }
 
   searchTermValueChange() {
     this.searchTerm.valueChanges.pipe(
-      debounceTime(400),
+      debounceTime(300),
       distinctUntilChanged(),
     ).subscribe(value => {
-      if (!value.trim()) {
+      if (!value?.trim()) {
         this.blogsService.filtredBlogs = this.blogsService.blogs
       }else {
         this.blogsService.filtredBlogs = this.blogsService.blogs.filter(
@@ -37,6 +36,7 @@ export class HomeComponent {
 
   clearSearch() {
     this.searchTerm.reset()
+    this.blogsService.clearSearch()
   }
 
 }

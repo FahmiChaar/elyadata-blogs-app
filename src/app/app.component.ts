@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BlogsService } from './services/blogs.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'elyadata-blogs';
+  constructor(
+    private blogsService: BlogsService
+  ) {
+    this.blogsService.getBlogs()
+  }
 }
