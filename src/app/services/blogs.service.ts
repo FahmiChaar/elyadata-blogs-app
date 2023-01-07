@@ -43,6 +43,44 @@ export class BlogsService {
     })
   }
 
+  getBlogById(id: any): Promise<Blog> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.get(`${this.apiUrl}/blogs/${id}`).subscribe({
+        next: (resp: any) => {
+          resolve(resp)
+        },
+        error: (e) => {
+          console.error(e)
+          this.snackBar.open('Blog not found')
+          reject(e)
+        }
+      })
+    })
+  }
+
+  vote(voteType: 'upvote' | 'downvote', blogId: any): Promise<Blog> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.put(`${this.apiUrl}/blogs/${blogId}/vote`, { voteType }).subscribe({
+        next: (resp: any) => {
+          this.updateBlogVote(voteType, blogId)
+          resolve(resp)
+        },
+        error: (e) => {
+          console.error(e)
+          this.snackBar.open('Error, Please try again')
+          reject(e)
+        }
+      })
+    })
+  }
+
+  private updateBlogVote(voteType: 'upvote' | 'downvote', blogId: string) {
+    const index = this.blogs.findIndex(b => b._id?.$oid === blogId)
+    if (index > -1) {
+      this.blogs[index][voteType]! += 1
+    }
+  }
+
   clearSearch() {
     this.filtredBlogs = [...this.blogs]
   }

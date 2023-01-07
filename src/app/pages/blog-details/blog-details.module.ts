@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { BlogDetailsRoutingModule } from './blog-details-routing.module';
 import { BlogDetailsComponent } from './blog-details.component';
+import { ComponentsModule } from '../../components/components.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { BlogDetailsComponent } from './blog-details.component';
   ],
   imports: [
     CommonModule,
-    BlogDetailsRoutingModule
+    BlogDetailsRoutingModule,
+    ComponentsModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class BlogDetailsModule { }

@@ -1,26 +1,28 @@
 <app-toolbar></app-toolbar>
 
-<div class="page-content has-toolbar">
-    <div class="form-title">Add New Blog</div>
-    <form [formGroup]="addBlogForm" (ngSubmit)="saveBlog()">
-        <mat-form-field appearance="outline">
-            <mat-label>Title</mat-label>
-            <input matInput placeholder="Blog title" formControlName="title" required>
-            <mat-error *ngIf="addBlogForm.get('title')?.hasError('required')">Blog title required</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Author</mat-label>
-            <input matInput placeholder="Blog author" formControlName="author" required>
-            <mat-error *ngIf="addBlogForm.get('author')?.hasError('required')">Blog author required</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Content</mat-label>
-            <textarea matInput rows="6" placeholder="Blog content" formControlName="content" required></textarea>
-            <mat-error *ngIf="addBlogForm.get('content')?.hasError('required')">Blog content required</mat-error>
-        </mat-form-field>
-        <button [disabled]="loading" type="submit" mat-raised-button color="primary">
-            <mat-spinner [diameter]="25" *ngIf="loading"></mat-spinner>
-            <span *ngIf="!loading">Save</span>
-        </button>
-    </form>
+<div class="page-content">
+    <div class="page-inner">
+        <div class="form-title">Add New Blog</div>
+        <form [formGroup]="addBlogForm" (ngSubmit)="saveBlog()">
+            <mat-form-field appearance="outline">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Blog title" formControlName="title" required>
+                <mat-error *ngIf="addBlogForm.get('title')?.hasError('required')">Blog title required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Author</mat-label>
+                <input matInput placeholder="Blog author" formControlName="author" required>
+                <mat-error *ngIf="addBlogForm.get('author')?.hasError('required')">Blog author required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Content</mat-label>
+                <textarea matInput rows="6" placeholder="Blog content" formControlName="content" required></textarea>
+                <mat-error *ngIf="addBlogForm.get('content')?.hasError('required')">Blog content required</mat-error>
+            </mat-form-field>
+            <button [disabled]="loading" type="submit" mat-raised-button color="primary">
+                <mat-spinner [diameter]="25" *ngIf="loading"></mat-spinner>
+                <span *ngIf="!loading">Save</span>
+            </button>
+        </form>
+    </div>
 </div>

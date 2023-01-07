@@ -1,5 +1,5 @@
 export default interface Blog {
-    id?: number
+    _id?: { $oid: string }
     title: string
     content: string
     author: string

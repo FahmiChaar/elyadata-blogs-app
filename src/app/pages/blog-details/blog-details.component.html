@@ -1,1 +1,25 @@
-<p>blog-details works!</p>
+<app-toolbar></app-toolbar>
+
+<div class="page-content">
+    <img class="cover-image" [src]="'https://picsum.photos/seed/'+blog._id?.$oid+'/600/300'" alt="">
+    <div class="page-inner">
+        <div class="blog-header">
+            <div class="title">{{ blog.title }}</div>
+            <div class="blog-info">
+                <div class="author">
+                    <img class="avatar" [src]="'https://robohash.org/'+blog.author+'.png'" alt="">
+                    <div>{{ blog.author }}</div>
+                </div>
+                <div class="votes-container">
+                    <button mat-button class="like-btn" (click)="vote('upvote')">
+                        <mat-icon>thumb_up</mat-icon> {{ blog.upvote }}
+                    </button>
+                    <button mat-button class="dislike-btn" (click)="vote('downvote')">
+                        <mat-icon>thumb_down</mat-icon> {{ blog.downvote }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content">{{ blog.content }}</div>
+    </div>    
+</div>

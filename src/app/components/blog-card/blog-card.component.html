@@ -1,5 +1,5 @@
 <div class="blog-card-container">
-    <img class="blog-image" [src]="'https://picsum.photos/seed/'+blog.id+'/400/400'" alt="">
+    <img class="blog-image" [src]="'https://picsum.photos/seed/'+blog._id?.$oid+'/400/400'" alt="">
     <div class="author">
         <img class="avatar" [src]="'https://robohash.org/'+blog.author+'.png'" alt="">
         <div class="name">{{ blog.author }}</div>
@@ -7,7 +7,7 @@
     <div class="blog-info">
         <div class="title">{{ blog.title }}</div>
         <div class="content">{{ blog.content|truncate }}</div>
-        <button mat-raised-button color="primary">Read More</button>
+        <button mat-raised-button color="primary" [routerLink]="['/blog-details/'+blog._id?.$oid]">Read More</button>
     </div>
     <div class="card-footer">
         <div class="upvotes">{{ blog.upvote || 0 }} Likes</div>

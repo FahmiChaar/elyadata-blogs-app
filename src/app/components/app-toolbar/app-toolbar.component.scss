@@ -6,6 +6,7 @@ mat-toolbar {
     width: 100%;
     .logo {
         width: 140px;
+        cursor: pointer;
     }
     .toolbar-spacer {
         flex: 1 1 auto;
