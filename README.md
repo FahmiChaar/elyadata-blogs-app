@@ -9,7 +9,7 @@ git clone https://github.com/FahmiChaar/elyadata-blogs-app.git
 ```
 - cd to project folder
 ```properties
-cd elyadata-blogs-api
+cd elyadata-blogs-app
 ```
 - Install requirements packages
 ```properties
